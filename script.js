@@ -46,7 +46,7 @@ window.onload = function () {
         var newItem = document.createElement("div");
         newItem.className = "item";
         newItem.innerHTML = key;
-        if (value = "1") {
+        if (value == "1") {
             //透明度设置
             newItem.style.opacity = 0.5;
         }
