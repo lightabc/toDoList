@@ -50,6 +50,14 @@ window.onload = function () {
             //透明度设置
             newItem.style.opacity = 0.5;
         }
+        newItem.onclick = function () {
+            this.style.opacity = 0.5;
+            //在localstorage中标记为已完成
+            //在localstorage中查找这个任务，标记value=0
+            if (localStorage.getItem(this.innerHTML)) {
+                localStorage.setItem(this.innerHTML, "1")
+            }
+        };
         //任务放到列表中
         var targetElement = document.getElementsByClassName("item")[0];
         if (!targetElement) {
@@ -58,4 +66,5 @@ window.onload = function () {
             document.body.insertBefore(newItem, targetElement);
         }
     }
+
 };
