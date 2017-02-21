@@ -8,7 +8,7 @@ input.onkeydown = function (e) {
         var newItem = document.createElement("div");
         newItem.className = "item";
         newItem.onclick = function(){
-            this.style.display = "none";
+            this.style.opacity = 0.5;
         };
         newItem.innerHTML = inputText;
         //插入新的任务到下面的列表
