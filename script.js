@@ -13,15 +13,6 @@ input.onkeydown = function (e) {
         //如果按下了回车，就添加一个任务
         var newItem = document.createElement("div");
         newItem.className = "item";
-        //新任务的点击事件
-        newItem.onclick = function () {
-            this.style.opacity = 0.5;
-            //在localstorage中标记为已完成
-            //在localstorage中查找这个任务，标记value=0
-            if (localStorage.getItem(inputText)) {
-                localStorage.setItem(inputText, "1")
-            }
-        };
         newItem.innerHTML = inputText;
         var targetElement = document.getElementsByClassName("item")[0];
         if (!targetElement) {
@@ -31,10 +22,12 @@ input.onkeydown = function (e) {
         }
         //清除输入框的内容
         input.value = "";
+        addClickEvent();
     }
 };
 //在刚打开页面后，根据localstoarage中的内容刷新页面。恢复数据
 window.onload = function () {
+    //刷新列表
     if (!localStorage.length) {
         return false;
     }
@@ -51,11 +44,22 @@ window.onload = function () {
             newItem.style.opacity = 0.5;
         }
         newItem.onclick = function () {
-            this.style.opacity = 0.5;
-            //在localstorage中标记为已完成
-            //在localstorage中查找这个任务，标记value=0
-            if (localStorage.getItem(this.innerHTML)) {
-                localStorage.setItem(this.innerHTML, "1")
+            if (this.style.opacity == 1 && !this.style.opacity) {
+                //如果没有标记完成
+                this.style.opacity = 0.5;
+                //在localstorage中标记为已完成
+                //在localstorage中查找这个任务，标记value=0
+                if (localStorage.getItem(this.innerHTML)) {
+                    localStorage.setItem(this.innerHTML, "1")
+                }
+            } else if (this.style.opacity == 0.5) {
+                //如果被标记完成
+                this.style.opacity = 1;
+                //在localstorage中标记为已完成
+                //在localstorage中查找这个任务，标记value=0
+                if (localStorage.getItem(this.innerHTML)) {
+                    localStorage.setItem(this.innerHTML, "0")
+                }
             }
         };
         //任务放到列表中
@@ -66,5 +70,27 @@ window.onload = function () {
             document.body.insertBefore(newItem, targetElement);
         }
     }
-
+    //item的点击事件
+    addClickEvent();
 };
+//给任务添加点击事件，用于标记是否已完成任务
+function addClickEvent() {
+    var items = document.getElementsByClassName("item");
+    for (var i = 0; i < items.length; i++) {
+        items[i].onclick = function () {
+            //检查此任务在数据库中的状态
+            var status = localStorage.getItem(this.innerHTML);
+            var newStatus = null;
+            if (status == 0) {
+                //如果是没有选中的状态
+                newStatus = 1;
+                this.style.opacity = 0.5;
+            } else {
+                //如果是选中的状态
+                newStatus = 0;
+                this.style.opacity = null;
+            }
+            localStorage.setItem(this.innerHTML, newStatus);
+        }
+    }
+}
