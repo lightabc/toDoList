@@ -62,22 +62,6 @@ window.onload = function () {
                 }
             }
         };
-        //添加滑动事件
-        newItem.addEventListener("touchstart", function (e) {
-            e.preventDefault();
-            var touch = e.touches[0];
-            startX = touch.clientX;
-        });
-        newItem.addEventListener("touchmove", function (e) {
-            e.preventDefault();
-            var touch = e.touches[0];
-            var dis = touch.clientX - startX;
-            //限定移动距离
-            if (Math.abs(dis) >= 50) {
-                return false;
-            }
-            this.style.left = dis + "px";
-        });
         //任务放到列表中
         var targetElement = document.getElementsByClassName("item")[0];
         if (!targetElement) {
@@ -108,21 +92,5 @@ function addClickEvent() {
             }
             localStorage.setItem(this.innerHTML, newStatus);
         };
-        //添加滑动事件
-        items[i].addEventListener("touchstart", function (e) {
-            e.preventDefault();
-            var touch = e.touches[0];
-            startX = touch.clientX;
-        });
-        items[i].addEventListener("touchmove", function (e) {
-            e.preventDefault();
-            var touch = e.touches[0];
-            var dis = touch.clientX - startX;
-            //限定移动距离
-            if (Math.abs(dis) >= 50) {
-                return false;
-            }
-            this.style.left = dis + "px";
-        });
     }
 }
