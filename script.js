@@ -43,10 +43,11 @@ window.onload = function () {
             document.body.insertBefore(newItem, targetElement);
         }
     }
-    //添加点击事件，标记任务状态
+    //添加任务的事件
     var items = document.getElementsByClassName("item");
     for (var j = 0; j < items.length; j++) {
-        items[j].onclick = function () {
+        items[j].addEventListener("click", function (e) {
+            e.preventDefault();
             if (this.style.opacity == 0.5) {
                 this.style.opacity = 1;
                 if (localStorage.getItem(this.innerHTML)) {
@@ -58,6 +59,6 @@ window.onload = function () {
                     localStorage.setItem(this.innerHTML, "1")
                 }
             }
-        };
+        });
     }
 };
