@@ -46,17 +46,20 @@ window.onload = function () {
     //添加任务的事件
     var items = document.getElementsByClassName("item");
     for (var j = 0; j < items.length; j++) {
-        items[j].addEventListener("click", function (e) {
+        items[j].addEventListener("touchstart", function (e) {
             e.preventDefault();
-            if (this.style.opacity == 0.5) {
-                this.style.opacity = 1;
-                if (localStorage.getItem(this.innerHTML)) {
-                    localStorage.setItem(this.innerHTML, "0")
-                }
+            var touch = e.touches[0];
+            startX = touch.clientX;
+        });
+        items[j].addEventListener("touchmove", function (e) {
+            e.preventDefault();
+            var touch = e.touches[0];
+            var dis = touch.clientX - startX;
+            if (dis > 0) {
+                return false;
             } else {
-                this.style.opacity = 0.5;
-                if (localStorage.getItem(this.innerHTML)) {
-                    localStorage.setItem(this.innerHTML, "1")
+                if (dis < -20) {
+                    this.style.left = "-50px"
                 }
             }
         });
