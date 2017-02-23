@@ -26,6 +26,16 @@ function createItem(content, status) {
     newItem.className = "item";
     newItem.innerHTML = content;
     //todo 添加事件
+    newItem.addEventListener("click", function () {
+        var status = localStorage.getItem(this.innerHTML);
+        if (status == 0) {
+            localStorage.setItem(this.innerHTML, "1");
+            this.style.opacity = 0.5;
+        } else {
+            localStorage.setItem(this.innerHTML, "0");
+            this.style.opacity = 1;
+        }
+    });
     //插入到列表
     var targetElement = document.getElementsByClassName("item")[0];
     if (!targetElement) {
