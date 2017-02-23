@@ -9,7 +9,7 @@ input.onkeydown = function (e) {
         localStorage.setItem(inputText, "0");
         var newItem = document.createElement("div");
         newItem.className = "item";
-        newItem.innerHTML = inputText;
+        newItem.innerHTML = "\<input type='checkbox'\>" + inputText;
         var targetElement = document.getElementsByClassName("item")[0];
         if (!targetElement) {
             document.body.appendChild(newItem);
@@ -32,10 +32,15 @@ window.onload = function () {
         var value = localStorage.getItem(localStorage.key(i));
         var newItem = document.createElement("div");
         newItem.className = "item";
-        newItem.innerHTML = key;
-        if (value == "1") {
-            newItem.style.opacity = 0.5;
+        newItem.innerHTML = "\<input type='checkbox'\>" + key;
+        //todo 任务状态
+        var checkbox1 = newItem.getElementsByTagName("input")[0];
+        if (value == 0) {
+            checkbox1.removeAttribute("checked");
+        }else {
+            checkbox1.setAttribute("checked","");
         }
+        //
         var targetElement = document.getElementsByClassName("item")[0];
         if (!targetElement) {
             document.body.appendChild(newItem);
@@ -43,9 +48,31 @@ window.onload = function () {
             document.body.insertBefore(newItem, targetElement);
         }
     }
-    //添加任务的事件
+    //todo 添加事件
     var items = document.getElementsByClassName("item");
     for (var j = 0; j < items.length; j++) {
-        //todo 任务左侧checkbox
+        var checkbox = items[j].getElementsByTagName("input")[0];
+        if (checkbox) {
+            checkbox.addEventListener("click", function () {
+                //检查状态
+                var status = 0;
+                if (this.getAttribute("checked")) {
+                    this.removeAttribute("checked");
+                    status = 0;
+                } else {
+                    this.setAttribute("checked", "");
+                    status = 1;
+                }
+                //添加到localstorage
+                var text = this.parentNode.innerText;
+                if (localStorage.getItem(text)) {
+                    localStorage.setItem(text, status);
+                } else {
+                    console.log("error");
+                }
+            })
+        } else {
+            console.log("没找到checkbox");
+        }
     }
 };

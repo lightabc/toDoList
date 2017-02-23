@@ -40,3 +40,6 @@ body {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.box input {
+  margin: 0 0.5rem 0 0;
+}
