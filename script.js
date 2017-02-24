@@ -26,7 +26,8 @@ function createItem(content, status) {
     newItem.className = "item";
     newItem.innerHTML = content;
     //todo 添加事件
-    newItem.addEventListener("click", function () {
+    newItem.addEventListener("click", function (e) {
+        e.preventDefault();
         var status = localStorage.getItem(this.innerHTML);
         if (status == 0) {
             localStorage.setItem(this.innerHTML, "1");
