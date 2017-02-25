@@ -13,7 +13,8 @@
 <div class="input">
     <input type="text" ng-model="inputText" ng-keydown="checkInput($event)">
 </div>
-<div class="item" ng-repeat="x in list">{{x.text}}</div>
+<div class="item" ng-repeat="x in list" ng-click="changeStatus($event.target)">{{x.text}}</div>
+<p ng-bind="list[0].done"></p>
 <script src="script.js"></script>
 </body>
 </html>
