@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myapp" ng-controller="ctrl01">
 <head>
     <meta charset="UTF-8">
     <!--让网页的尺寸等于手机分辨率-->
@@ -7,11 +7,13 @@
           content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1, user-scalable=no"/>
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
+    <script src="angular.min.js"></script>
 </head>
 <body>
 <div class="input">
-    <input type="text">
+    <input type="text" ng-model="inputText">
 </div>
+<p ng-bind="inputText"></p>
 <script src="script.js"></script>
 </body>
 </html>

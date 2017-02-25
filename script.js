@@ -47,3 +47,8 @@ function createItem(content, status) {
     //同步到localstorage
     localStorage.setItem(content, status);
 }
+
+var app = angular.module("myapp", []);
+app.controller("ctrl01", function ($scope) {
+   $scope.inputText = "";
+});
