@@ -50,5 +50,6 @@ function createItem(content, status) {
 
 var app = angular.module("myapp", []);
 app.controller("ctrl01", function ($scope) {
-   $scope.inputText = "";
+    $scope.inputText = "";
+    $scope.list = [{text: "clean house", done: false}];
 });
