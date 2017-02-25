@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="input">
-    <input type="text" ng-model="inputText" ng-keypress="keypress($event)">
+    <input type="text" ng-model="inputText" ng-keydown="checkInput($event)">
 </div>
 <div class="item" ng-repeat="x in list">{{x.text}}</div>
 <script src="script.js"></script>
