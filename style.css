@@ -14,15 +14,16 @@ body {
 body {
   position: relative;
 }
-.input {
+.input,
+.item {
   border-radius: 0.25rem;
   margin: 0.25rem;
+  padding: 0 0.5rem;
   height: 2.5rem;
   background-color: #fff;
 }
 .input input {
   border-radius: 0.25rem;
-  padding: 0 0.5rem;
   width: 100%;
   height: 100%;
   outline-style: none;
@@ -33,12 +34,7 @@ body {
   box-sizing: border-box;
 }
 .item {
-  border-radius: 0.25rem;
-  margin: 0.25rem;
-  padding: 0 0.5rem;
-  height: 2.5rem;
   line-height: 2.5rem;
-  background-color: #fff;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
