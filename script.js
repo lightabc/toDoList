@@ -9,6 +9,6 @@ app.controller("ctrl01", function ($scope) {
         }
     };
     $scope.add = function (inputText) {
-        $scope.list.push({text: inputText, done: false});
+        $scope.list.unshift({text: inputText, done: false});
     };
 });
