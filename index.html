@@ -13,7 +13,9 @@
 <div class="input">
     <input type="text" ng-model="inputText" ng-keydown="checkInput($event)">
 </div>
-<div class="item" ng-repeat="x in list" ng-click="changeStatus($event.target)">{{x.text}}</div>
+<div class="item" ng-repeat="x in list">
+    <input type="checkbox" ng-model="x.done" ng-checked="x.done"><span ng-bind="x.text"></span>
+</div>
 <script src="script.js"></script>
 </body>
 </html>
