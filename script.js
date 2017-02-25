@@ -52,4 +52,12 @@ var app = angular.module("myapp", []);
 app.controller("ctrl01", function ($scope) {
     $scope.inputText = "";
     $scope.list = [{text: "clean house", done: false}];
+    $scope.keypress = function ($event) {
+        if ($event.keyCode == 13) {//回车
+            add($scope.inputText);
+        }
+    };
+    $scope.add = function (inputText) {
+        $scope.list.push({text: inputText, done: false});
+    }
 });
