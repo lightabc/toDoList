@@ -1,4 +1,5 @@
-var app = angular.module("myapp", []);
+console.log(store);
+var app = angular.module('myapp', []);
 app.controller("ctrl01", function ($scope) {
     $scope.inputText = "";
     $scope.list = [{text: "clean house", done: false}];
