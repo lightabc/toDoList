@@ -2,7 +2,6 @@ var app = angular.module('myapp', []);
 app.controller("ctrl01", function ($scope) {
     $scope.list = [];
     //恢复数据
-    console.log(store.get("list"));
     $scope.checkInput = function ($event) {
         if ($event.keyCode == 13) {
             $scope.add($scope.inputText);
